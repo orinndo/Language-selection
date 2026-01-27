@@ -2,85 +2,190 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>冠動脈造影CT検査 外国語音声ガイド</title>
 <style>
+  :root{
+    --ink:#0f172a;
+    --muted:#475569;
+    --card:#ffffff;
+    --stroke:rgba(226,232,240,.9);
+    --shadow:0 18px 40px rgba(15,23,42,.18);
+    --glass:rgba(255,255,255,.78);
+    --glass-strong:rgba(255,255,255,.88);
+  }
+
+  html,body{height:100%;}
   body{
     margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Segoe UI",sans-serif;
-    background:linear-gradient(180deg,#f7fbff,#eef6ff);
-    color:#0f172a;
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Segoe UI",system-ui,sans-serif;
+    color:var(--ink);
+    background:#0b1220;
+    overflow-x:hidden;
+  }
+
+  /* ====== Full-bleed photo background ====== */
+  .bg{
+    position:fixed;
+    inset:0;
+    background:
+      radial-gradient(1200px 600px at 20% 30%, rgba(255,255,255,.18), transparent 60%),
+      radial-gradient(900px 500px at 70% 40%, rgba(56,189,248,.18), transparent 60%),
+      linear-gradient(180deg, rgba(8,15,30,.25), rgba(8,15,30,.35)),
+      url("bg.png") center/cover no-repeat;
+    filter:saturate(1.02) contrast(1.02);
+    transform:translateZ(0);
+  }
+
+  /* soft vignette */
+  .bg:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(120% 120% at 50% 30%, rgba(255,255,255,.10), rgba(8,15,30,.40) 70%, rgba(8,15,30,.55));
+    pointer-events:none;
+  }
+
+  /* ====== Center card ====== */
+  .wrap{
+    position:relative;
+    min-height:100%;
     display:flex;
     align-items:center;
     justify-content:center;
-    min-height:100vh;
+    padding:28px 16px calc(28px + env(safe-area-inset-bottom));
   }
-  .card{
-    background:#fff;
-    border:1px solid #e2e8f0;
-    border-radius:22px;
-    padding:30px 22px 28px;
-    width:min(460px, calc(100% - 32px));
-    box-shadow:0 12px 28px rgba(15,23,42,.08);
+
+  .panel{
+    width:min(760px, 100%);
+    border-radius:28px;
+    background:linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.70));
+    border:1px solid rgba(226,232,240,.75);
+    box-shadow:0 22px 50px rgba(15,23,42,.20);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    overflow:hidden;
+  }
+
+  .panel-inner{
+    padding:34px 22px 30px;
     text-align:center;
   }
+
   .title{
-    margin:0 0 10px;
-    font-size:20px;
-    font-weight:700;
+    margin:0;
+    font-size:26px;
+    font-weight:800;
+    letter-spacing:.02em;
+    line-height:1.35;
+    text-shadow:0 2px 12px rgba(15,23,42,.10);
   }
-  .lang-title{
-    margin:0 0 24px;
+
+  .title .small{
+    display:block;
     font-size:22px;
-    font-weight:700;
+    font-weight:800;
+    margin-top:4px;
   }
+
+  .prompt{
+    margin:22px 0 6px;
+    font-size:26px;
+    font-weight:800;
+    letter-spacing:.02em;
+  }
+
   .sub{
-    margin:0 0 24px;
-    font-size:14px;
-    color:#475569;
+    margin:0 0 22px;
+    font-size:16px;
+    color:var(--muted);
+    font-weight:600;
   }
-  .btn{
+
+  /* ====== Buttons row ====== */
+  .btn-row{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:16px;
+    margin-top:10px;
+  }
+
+  .lang-btn{
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:10px;
+    gap:12px;
+    padding:18px 16px;
+    border-radius:18px;
     text-decoration:none;
-    margin:14px 0;
-    padding:18px;
-    border-radius:16px;
-    border:1px solid #cbd5e1;
-    font-size:18px;
-    font-weight:600;
-    color:#0f172a;
-    background:#ffffff;
-  }
-  .flag{
+    color:var(--ink);
+    background:var(--glass);
+    border:1.5px solid rgba(203,213,225,.95);
+    box-shadow:0 10px 22px rgba(15,23,42,.10);
     font-size:22px;
-    line-height:1;
+    font-weight:800;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: transform .08s ease, box-shadow .18s ease, background .18s ease;
+    user-select:none;
+    -webkit-tap-highlight-color: transparent;
   }
-  .btn:active{
-    transform:scale(.98);
+
+  .lang-btn:hover{
+    background:var(--glass-strong);
+    box-shadow:0 14px 28px rgba(15,23,42,.14);
+  }
+  .lang-btn:active{ transform:scale(.985); }
+
+  .flag{
+    font-size:26px;
+    line-height:1;
+    filter: drop-shadow(0 6px 10px rgba(15,23,42,.18));
+  }
+
+  /* small helper to keep Chinese label nice */
+  .cn{ letter-spacing:.02em; }
+
+  /* ====== Responsive tweaks ====== */
+  @media (max-width:520px){
+    .panel-inner{ padding:28px 18px 24px; }
+    .title{ font-size:22px; }
+    .title .small{ font-size:20px; }
+    .prompt{ font-size:22px; }
+    .sub{ font-size:14px; }
+    .btn-row{ grid-template-columns: 1fr; }
+    .lang-btn{ font-size:20px; padding:16px 14px; }
+    .flag{ font-size:24px; }
   }
 </style>
 </head>
 <body>
+  <div class="bg" aria-hidden="true"></div>
 
-<div class="card">
-  <p class="title">冠動脈造影CT検査<br>外国語音声ガイド</p>
+  <main class="wrap">
+    <section class="panel" role="region" aria-label="言語選択">
+      <div class="panel-inner">
+        <h1 class="title">
+          冠動脈造影CT検査
+          <span class="small">外国語音声ガイド</span>
+        </h1>
 
-  <p class="lang-title">言語を選択してください</p>
-  <p class="sub">Please select your language</p>
+        <div class="prompt">言語を選択してください</div>
+        <p class="sub">Please select your language</p>
 
-  <a class="btn" href="https://orinndo.github.io/english-audio-guide/">
-    <span class="flag">🇺🇸</span>
-    <span>English</span>
-  </a>
+        <div class="btn-row">
+          <a class="lang-btn" href="https://orinndo.github.io/english-audio-guide/" aria-label="English">
+            <span class="flag" aria-hidden="true">🇺🇸</span>
+            <span>English</span>
+          </a>
 
-  <a class="btn" href="https://orinndo.github.io/chinese-audio-guide/">
-    <span class="flag">🇨🇳</span>
-    <span>中文（简体）</span>
-  </a>
-</div>
-
+          <a class="lang-btn" href="https://orinndo.github.io/chinese-audio-guide/" aria-label="中文（简体）">
+            <span class="flag" aria-hidden="true">🇨🇳</span>
+            <span class="cn">中文（简体）</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
