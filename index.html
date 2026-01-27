@@ -1,29 +1,40 @@
+
 <!doctype html>
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>冠動脈造影CT検査 外国語音声ガイド</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Language Selection</title>
 <style>
-html,body{margin:0;height:100%;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Segoe UI",sans-serif;}
-body{background:url("bg.png") center/cover no-repeat fixed;display:flex;align-items:center;justify-content:center;}
-.overlay{position:absolute;inset:0;background:rgba(0,0,0,0.35);}
-.container{position:relative;z-index:1;text-align:center;width:100%;max-width:520px;padding:24px;}
-h1{color:#fff;font-size:26px;margin-bottom:24px;line-height:1.4;}
-.buttons{display:grid;gap:18px;}
-a.btn{text-decoration:none;background:rgba(255,255,255,0.92);border-radius:18px;padding:18px;font-size:22px;font-weight:600;color:#000;display:flex;align-items:center;justify-content:center;gap:12px;}
-a.btn:hover{background:#fff;}
-.flag{font-size:28px;}
+html,body{
+  margin:0; padding:0; height:100%;
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Segoe UI",sans-serif;
+}
+body{
+  background:url('bg.png') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.container{
+  display:flex;
+  gap:24px;
+}
+a.button{
+  background:rgba(255,255,255,0.9);
+  padding:24px 36px;
+  border-radius:16px;
+  text-decoration:none;
+  color:#000;
+  font-size:20px;
+  font-weight:600;
+}
 </style>
 </head>
 <body>
-<div class="overlay"></div>
-<div class="container">
-<h1>冠動脈造影CT検査<br>外国語音声ガイド</h1>
-<div class="buttons">
-<a class="btn" href="../English/"><span class="flag">🇺🇸</span>English</a>
-<a class="btn" href="../Chinese/"><span class="flag">🇨🇳</span>中文（简体）</a>
-</div>
-</div>
+  <div class="container">
+    <a class="button" href="./en/index.html">English</a>
+    <a class="button" href="./zh/index.html">中文</a>
+  </div>
 </body>
 </html>
