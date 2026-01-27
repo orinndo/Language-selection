@@ -5,121 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>冠動脈造影CT検査 外国語音声ガイド</title>
 <style>
-html,body{
-  margin:0;
-  height:100%;
-  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Segoe UI",sans-serif;
-}
-body{
-  background:url("bg.png") center/cover no-repeat fixed;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.overlay{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.35);
-}
-.container{
-  position:relative;
-  z-index:1;
-  text-align:center;
-  width:100%;
-  max-width:520px;
-  padding:24px;
-}
-h1{
-  color:#fff;
-  font-size:26px;
-  margin-bottom:20px;
-  line-height:1.4;
-}
-.buttons{
-  display:grid;
-  gap:18px;
-}
-button.btn{
-  border:none;
-  background:rgba(255,255,255,0.92);
-  border-radius:18px;
-  padding:18px;
-  font-size:22px;
-  font-weight:600;
-  color:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:12px;
-}
-button.btn:hover{background:#fff;cursor:pointer}
-.flag{font-size:28px}
-
-#audioPanel{
-  display:none;
-  margin-top:24px;
-  background:rgba(255,255,255,0.92);
-  border-radius:18px;
-  padding:16px;
-}
-#audioPanel h2{
-  font-size:18px;
-  margin:0 0 12px 0;
-}
-audio{
-  width:100%;
-}
-.back{
-  margin-top:12px;
-  font-size:14px;
-  color:#0066cc;
-  background:none;
-  border:none;
-}
+html,body{margin:0;height:100%;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Segoe UI",sans-serif;}
+body{background:url("bg.png") center/cover no-repeat fixed;display:flex;align-items:center;justify-content:center;}
+.overlay{position:absolute;inset:0;background:rgba(0,0,0,0.35);}
+.container{position:relative;z-index:1;text-align:center;width:100%;max-width:520px;padding:24px;}
+h1{color:#fff;font-size:26px;margin-bottom:24px;line-height:1.4;}
+.buttons{display:grid;gap:18px;}
+a.btn{text-decoration:none;background:rgba(255,255,255,0.92);border-radius:18px;padding:18px;font-size:22px;font-weight:600;color:#000;display:flex;align-items:center;justify-content:center;gap:12px;}
+a.btn:hover{background:#fff;}
+.flag{font-size:28px;}
 </style>
 </head>
 <body>
 <div class="overlay"></div>
 <div class="container">
-<h1>
-冠動脈造影CT検査<br>
-外国語音声ガイド
-</h1>
-
-<div class="buttons" id="langButtons">
-<button class="btn" onclick="showAudio('en')"><span class="flag">🇺🇸</span> English</button>
-<button class="btn" onclick="showAudio('zh')"><span class="flag">🇨🇳</span> 中文（简体）</button>
+<h1>冠動脈造影CT検査<br>外国語音声ガイド</h1>
+<div class="buttons">
+<a class="btn" href="../English/"><span class="flag">🇺🇸</span>English</a>
+<a class="btn" href="../Chinese/"><span class="flag">🇨🇳</span>中文（简体）</a>
 </div>
-
-<div id="audioPanel">
-<h2 id="audioTitle"></h2>
-<audio id="audioPlayer" controls></audio>
-<button class="back" onclick="goBack()">← 言語選択に戻る</button>
 </div>
-
-</div>
-
-<script>
-function showAudio(lang){
-  const title = document.getElementById('audioTitle');
-  const player = document.getElementById('audioPlayer');
-  document.getElementById('langButtons').style.display = 'none';
-  document.getElementById('audioPanel').style.display = 'block';
-
-  if(lang === 'en'){
-    title.textContent = 'English Audio Guidance';
-    player.src = 'audio/en_intro.mp3';
-  }else{
-    title.textContent = '中文语音引导';
-    player.src = 'audio/zh_intro.mp3';
-  }
-}
-
-function goBack(){
-  document.getElementById('audioPanel').style.display = 'none';
-  document.getElementById('langButtons').style.display = 'grid';
-  document.getElementById('audioPlayer').pause();
-}
-</script>
 </body>
 </html>
