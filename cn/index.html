@@ -6,49 +6,6 @@
 <title>音声ガイドを選択してください</title>
 
 <style>
-/* === Shared background + language switch (added) === */
-html, body { height: 100%; }
-body{
-  margin:0;
-  background: url("../assets/bg.png") center/cover no-repeat fixed;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-body::before{
-  content:"";
-  position:fixed; inset:0;
-  background: linear-gradient(180deg, rgba(10,20,30,.55), rgba(10,20,30,.35));
-  pointer-events:none;
-}
-.lang-switch{
-  position: fixed;
-  top: 14px;
-  right: 14px;
-  z-index: 9999;
-  display:flex;
-  gap:10px;
-}
-.lang-switch a{
-  text-decoration:none;
-  font-weight:700;
-  font-size:14px;
-  padding:10px 14px;
-  border-radius:999px;
-  color:#fff;
-  background: rgba(255,255,255,.16);
-  border:1px solid rgba(255,255,255,.28);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-.lang-switch a.active{
-  background: rgba(255,255,255,.32);
-  border-color: rgba(255,255,255,.45);
-}
-@media (max-width:480px){
-  .lang-switch{ top:10px; right:10px; gap:8px; }
-  .lang-switch a{ padding:9px 12px; font-size:13px; }
-}
-
 body {
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Segoe UI",sans-serif;
@@ -115,18 +72,39 @@ body {
   background:#f8fbff;
 }
 
+
+/* === Language switch (added) === */
+.langbar{
+  display:flex;
+  gap:10px;
+  padding:0 18px 14px;
+}
+.langpill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 14px;
+  border-radius:14px;
+  border:1px solid #e2e8f0;
+  background:#ffffff;
+  box-shadow:0 8px 18px rgba(15,23,42,0.06);
+  text-decoration:none;
+  color:#0f172a;
+  font-size:13px;
+  font-weight:600;
+}
+.langpill.current{
+  border-color:#38bdf8;
+  background:linear-gradient(135deg,#93c5fd,#38bdf8);
+  color:#ffffff;
+}
+
 </style>
 
-<link rel="stylesheet" href="../assets/translator.css">
+<link rel="stylesheet" href="translator.css">
 </head>
 
 <body>
-
-<div class="lang-switch" aria-label="Language switch">
-  <a href="../en/index.html" class="">English</a>
-  <a href="../cn/index.html" class="active">中文</a>
-</div>
-
 
 <div class="header">
   <div class="header-title frame-title">
@@ -138,6 +116,11 @@ body {
       冠状动脉CT血管造影（CCTA）– 中文语音指南
     </p>
   </div>
+</div>
+
+<div class="langbar">
+  <a class="langpill current" href="#" aria-current="page">中文</a>
+  <a class="langpill" href="../en/">English</a>
 </div>
 
 <div class="page-footer" style="padding-top:0;">
@@ -258,6 +241,6 @@ body {
 
 <div id="toast" class="toast" aria-live="polite"></div>
 
-<script src="../assets/translator.js"></script>
+<script src="translator.js"></script>
 </body>
 </html>
