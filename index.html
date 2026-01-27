@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>言語を選択してください</title>
+<title>冠動脈造影CT検査 外国語音声ガイド</title>
 <style>
   body{
     margin:0;
@@ -18,62 +18,68 @@
   .card{
     background:#fff;
     border:1px solid #e2e8f0;
-    border-radius:20px;
-    padding:28px 22px;
-    width:min(420px, calc(100% - 32px));
+    border-radius:22px;
+    padding:30px 22px 28px;
+    width:min(460px, calc(100% - 32px));
     box-shadow:0 12px 28px rgba(15,23,42,.08);
     text-align:center;
   }
-  h1{
-    margin:0 0 6px;
+  .title{
+    margin:0 0 10px;
+    font-size:20px;
+    font-weight:700;
+  }
+  .lang-title{
+    margin:0 0 24px;
     font-size:22px;
+    font-weight:700;
   }
   .sub{
-    margin:0 0 22px;
+    margin:0 0 24px;
     font-size:14px;
     color:#475569;
   }
   .btn{
-    display:block;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
     text-decoration:none;
     margin:14px 0;
     padding:18px;
-    border-radius:14px;
+    border-radius:16px;
     border:1px solid #cbd5e1;
     font-size:18px;
     font-weight:600;
     color:#0f172a;
     background:#ffffff;
   }
+  .flag{
+    font-size:22px;
+    line-height:1;
+  }
   .btn:active{
     transform:scale(.98);
-  }
-  .note{
-    margin-top:18px;
-    font-size:13px;
-    color:#475569;
-    line-height:1.6;
   }
 </style>
 </head>
 <body>
 
 <div class="card">
-  <h1>言語を選択してください</h1>
+  <p class="title">冠動脈造影CT検査<br>外国語音声ガイド</p>
+
+  <p class="lang-title">言語を選択してください</p>
   <p class="sub">Please select your language</p>
 
   <a class="btn" href="https://orinndo.github.io/english-audio-guide/">
-    English
+    <span class="flag">🇺🇸</span>
+    <span>English</span>
   </a>
 
   <a class="btn" href="https://orinndo.github.io/chinese-audio-guide/">
-    中文（简体）
+    <span class="flag">🇨🇳</span>
+    <span>中文（简体）</span>
   </a>
-
-  <p class="note">
-    QRコードを読み取り、使用する言語を選択してください。<br>
-    请扫描二维码并选择您的语言。
-  </p>
 </div>
 
 </body>
