@@ -1,35 +1,104 @@
-
 <!doctype html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Language Selection</title>
-<link rel="stylesheet" href="translator.css">
+<link rel="stylesheet" href="assets/translator.css">
+<style>
+/* Background */
+html, body{height:100%}
+body{
+  margin:0;
+  background: url("assets/bg.png") center/cover no-repeat fixed;
+}
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  background: linear-gradient(180deg, rgba(10,20,30,.55), rgba(10,20,30,.35));
+  pointer-events:none;
+}
+.wrap{
+  position:relative;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 32px 16px 40px;
+}
+h1{
+  margin: 6px 0 8px;
+  color:#fff;
+  text-shadow: 0 2px 20px rgba(0,0,0,.45);
+  font-size: 28px;
+  line-height:1.2;
+}
+.sub{
+  margin:0 0 22px;
+  color: rgba(255,255,255,.9);
+  text-shadow: 0 2px 20px rgba(0,0,0,.35);
+}
+.grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap:14px;
+}
+@media (max-width:700px){
+  .grid{ grid-template-columns: 1fr; }
+}
+.cardLink{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:18px 16px;
+  border-radius:16px;
+  background: rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color:#fff;
+  text-decoration:none;
+  box-shadow: 0 10px 30px rgba(0,0,0,.20);
+}
+.cardLink:active{ transform: scale(.99); }
+.badge{
+  width:46px; height:46px;
+  border-radius:14px;
+  display:grid; place-items:center;
+  background: rgba(255,255,255,.18);
+  border:1px solid rgba(255,255,255,.25);
+  font-size: 24px;
+}
+.title{
+  font-size:20px; font-weight:800; margin:0;
+}
+.desc{
+  margin:2px 0 0;
+  color: rgba(255,255,255,.9);
+  font-size: 14px;
+}
+</style>
 </head>
 <body>
+  <div class="wrap">
+    <h1>冠動脈造影CT検査 / Audio Guide</h1>
+    <p class="sub">言語を選択してください / Please select your language</p>
 
-<h1 class="title">言語を選択してください</h1>
+    <div class="grid">
+      <a class="cardLink" href="en/index.html">
+        <div class="badge">🇺🇸</div>
+        <div>
+          <p class="title">English</p>
+          <p class="desc">Audio guide & sections</p>
+        </div>
+      </a>
 
-<div class="container">
-
-  <a class="card" href="https://orinndo.github.io/english/">
-    <div class="num">EN</div>
-    <div class="texts">
-      <div class="jp">英語</div>
-      <div class="en">English Audio Guide</div>
+      <a class="cardLink" href="cn/index.html">
+        <div class="badge">🇨🇳</div>
+        <div>
+          <p class="title">中文（简体）</p>
+          <p class="desc">语音指南 & 分段页面</p>
+        </div>
+      </a>
     </div>
-  </a>
-
-  <a class="card" href="https://orinndo.github.io/chinese/">
-    <div class="num">中</div>
-    <div class="texts">
-      <div class="jp">中国語（簡体）</div>
-      <div class="en">Chinese Audio Guide</div>
-    </div>
-  </a>
-
-</div>
-
+  </div>
 </body>
 </html>
