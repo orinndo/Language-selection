@@ -32,15 +32,15 @@ body{
 h1{
   color:#fff;
   font-size:26px;
-  margin-bottom:24px;
+  margin-bottom:20px;
   line-height:1.4;
 }
 .buttons{
   display:grid;
   gap:18px;
 }
-a.btn{
-  text-decoration:none;
+button.btn{
+  border:none;
   background:rgba(255,255,255,0.92);
   border-radius:18px;
   padding:18px;
@@ -52,8 +52,30 @@ a.btn{
   justify-content:center;
   gap:12px;
 }
-a.btn:hover{background:#fff}
+button.btn:hover{background:#fff;cursor:pointer}
 .flag{font-size:28px}
+
+#audioPanel{
+  display:none;
+  margin-top:24px;
+  background:rgba(255,255,255,0.92);
+  border-radius:18px;
+  padding:16px;
+}
+#audioPanel h2{
+  font-size:18px;
+  margin:0 0 12px 0;
+}
+audio{
+  width:100%;
+}
+.back{
+  margin-top:12px;
+  font-size:14px;
+  color:#0066cc;
+  background:none;
+  border:none;
+}
 </style>
 </head>
 <body>
@@ -63,14 +85,41 @@ a.btn:hover{background:#fff}
 冠動脈造影CT検査<br>
 外国語音声ガイド
 </h1>
-<div class="buttons">
-<a class="btn" href="https://orinndo.github.io/english-audio-guide/">
-<span class="flag">🇺🇸</span> English
-</a>
-<a class="btn" href="https://orinndo.github.io/chinese-audio-guide/">
-<span class="flag">🇨🇳</span> 中文（简体）
-</a>
+
+<div class="buttons" id="langButtons">
+<button class="btn" onclick="showAudio('en')"><span class="flag">🇺🇸</span> English</button>
+<button class="btn" onclick="showAudio('zh')"><span class="flag">🇨🇳</span> 中文（简体）</button>
 </div>
+
+<div id="audioPanel">
+<h2 id="audioTitle"></h2>
+<audio id="audioPlayer" controls></audio>
+<button class="back" onclick="goBack()">← 言語選択に戻る</button>
 </div>
+
+</div>
+
+<script>
+function showAudio(lang){
+  const title = document.getElementById('audioTitle');
+  const player = document.getElementById('audioPlayer');
+  document.getElementById('langButtons').style.display = 'none';
+  document.getElementById('audioPanel').style.display = 'block';
+
+  if(lang === 'en'){
+    title.textContent = 'English Audio Guidance';
+    player.src = 'audio/en_intro.mp3';
+  }else{
+    title.textContent = '中文语音引导';
+    player.src = 'audio/zh_intro.mp3';
+  }
+}
+
+function goBack(){
+  document.getElementById('audioPanel').style.display = 'none';
+  document.getElementById('langButtons').style.display = 'grid';
+  document.getElementById('audioPlayer').pause();
+}
+</script>
 </body>
 </html>
