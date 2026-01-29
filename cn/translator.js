@@ -68,9 +68,9 @@
     const q = encodeURIComponent(text);
     let url = '';
     if(t === 'google'){
-      url = `https://translate.google.com/?sl=ja&tl=en&text=${q}&op=translate`;
+      url = `https://translate.google.com/?sl=ja&tl=zh-CN&text=${q}&op=translate`;
     }else if(t === 'deepl'){
-      url = `https://www.deepl.com/translator#ja/en/${q}`;
+      url = `https://www.deepl.com/translator#ja/zh/${q}`;
     }else if(t === 'gemini'){
       url = 'https://gemini.google.com/';
     }
